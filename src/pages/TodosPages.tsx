@@ -26,16 +26,16 @@ export const TodosPages: React.FC = () => {
         setTodos(prev => [newTodo, ...prev])
     }
     const toggleHandler = (id: number) => {
-
         setTodos(prev =>
             prev.map(todo => {
-                console.log(id)
                 if (todo.id === id) {
-                    todo.completed = !todo.completed
+                    return {
+                        ...todo,
+                        completed: !todo.completed
+                    }
                 }
                 return todo
-            })
-        )
+            }))
     }
     const removeHandler = (id: number) => {
         const shoudRemove = confirm('Are you sure?')
